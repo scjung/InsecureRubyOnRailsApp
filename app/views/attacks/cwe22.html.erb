@@ -1,0 +1,32 @@
+<% provide(:title, 'CWE-22: Path Traversal') %>
+<h1>CWE-22: Path Traversal</h1>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_with(url: attack_path, method: :PUT, scope: :session, local: true) do |f| %>
+      <div class="form-group">
+        <%= f.label :note do %>
+          Choose a note
+        <% end %>
+        <%= f.select :note, @notes, class: 'form-control' %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :book do %>
+          ...or try input
+        <% end %>
+        <%= f.text_field :password, class: 'form-control',
+                                    placeholder: 'note title' %>
+      </div>
+
+      <div class="checkbox">
+        <%= f.label :defense do %>
+          <%= f.check_box :defense %>
+          Defense the attack
+        <% end %>
+      </div>
+
+      <%= f.submit 'Submit', class: 'btn btn-primary' %>
+    <% end %>
+  </div>
+</div>
