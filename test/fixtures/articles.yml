@@ -1,0 +1,31 @@
+orange:
+  content: 'I just ate an orange'
+  created_at: <%= 10.minutes.ago %>
+  user: michael
+
+tau_manifesto:
+  content: 'Check out @tauday site: https://tauday.com'
+  created_at: <%= 3.years.ago %>
+  user: michael
+
+most_recent:
+  content: 'Writing a short test'
+  created_at: <%= Time.zone.now %>
+  user: michael
+
+<% 30.times do |n| %>
+article_<%= n %>:
+  content: <%= Faker::Lorem.sentence(word_count: 5) %>
+  created_at: <%= 42.days.ago %>
+  user: michael
+<% end %>
+
+zone:
+  content: 'danger zone!'
+  created_at: <%= 3.days.ago %>
+  user: archer
+
+van:
+  content: "this van's, like, rolling probable cause."
+  created_at: <%= 4.hours.ago %>
+  user: lana

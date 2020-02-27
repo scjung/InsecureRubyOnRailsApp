@@ -1,0 +1,27 @@
+<% if logged_in? %>
+  <div class="row">
+    <aside class="col-md-4">
+      <section class="user_info">
+        <%= render 'shared/user_info' %>
+      </section>
+      <section class="stats">
+        <%= render 'shared/stats' %>
+      </section>
+      <section class="article_form">
+        <%= render 'shared/article_form' %>
+      </section>
+    </aside>
+    <div class="col-md-8">
+      <h3>Article Feed</h3>
+      <%= render 'shared/feed' %>
+    </div>
+  </div>
+<% else %>
+<div class="center jumbotron">
+  <h1>Deliberately Insecure Ruby on Rails Application</h1>
+  <h2>
+    Deliberately Insecure Ruby on Rails Application
+  </h2>
+  <%= link_to 'Sign up', signup_path, class: 'btn btn-lg btn-primary' %>
+</div>
+<% end %>
