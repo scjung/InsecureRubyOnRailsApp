@@ -3,20 +3,16 @@
 
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
-    <%= form_with(url: attack_path, method: :PUT, scope: :session, local: true) do |f| %>
+    <%= form_with(url: attack_path(22), method: :patch, local: true) do |f| %>
       <div class="form-group">
         <%= f.label :note do %>
-          Choose a note
+          Input a note title:
         <% end %>
-        <%= f.select :note, @notes, class: 'form-control' %>
-      </div>
-
-      <div class="form-group">
-        <%= f.label :book do %>
-          ...or try input
-        <% end %>
-        <%= f.text_field :password, class: 'form-control',
-                                    placeholder: 'note title' %>
+        <%= f.text_field :note, class: 'form-control', placeholder: 'note title' %>
+        <span class="help-block">
+          <p>Expected input: <%= @notes %></p>
+          <p>Malicious input: ../secret </p>
+        </span>
       </div>
 
       <div class="checkbox">
@@ -30,3 +26,11 @@
     <% end %>
   </div>
 </div>
+
+<% if @note %>
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      <pre><%= @note %></pre>
+    </div>
+  </div>
+<% end %>

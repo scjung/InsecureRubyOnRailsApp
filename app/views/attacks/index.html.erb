@@ -8,7 +8,7 @@
     <div class="row mb-4">
   <% end %>
   <div class="col-md-6">
-    <%= link_to "CWE-#{id}: #{name}", attack_path(id),
+    <%= link_to "CWE-#{id}: #{name}", edit_attack_path(id),
                 class: 'btn btn-default btn-block btn-lg' %>
   </div>
   <% if i % 2 != 0 %>
