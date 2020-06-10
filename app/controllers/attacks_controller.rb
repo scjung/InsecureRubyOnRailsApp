@@ -18,6 +18,8 @@ class AttacksController < ApplicationController
       edit_cwe22
     when '78'
       edit_cwe78
+    when '79'
+      edit_cwe79
     else
       render status: 404
     end
@@ -29,6 +31,8 @@ class AttacksController < ApplicationController
       update_cwe22
     when '78'
       update_cwe78
+    when '79'
+      update_cwe79
     else
       render status: 404
     end
@@ -51,12 +55,12 @@ class AttacksController < ApplicationController
   def update_cwe22
     dir = Rails.public_path.join('notes')
     note = params[:note]
-    if params[:defense] == '1'
-      note = note.gsub(%r{[\\/]}, '')
-      note_file = File.join(dir, note + '.txt')
-    else
-      note_file = File.join(dir, params[:note] + '.txt')
-    end
+    note = if params[:defense] == '1'
+             note.gsub(%r{[\\/]}, '')
+           else
+             params[:note]
+           end
+    note_file = File.join(dir, note + '.txt')
 
     @note = if File.exist?(note_file)
               File.read(note_file)
@@ -85,5 +89,17 @@ class AttacksController < ApplicationController
     end
 
     render :cwe78
+  end
+
+  # CWE-79 -------------------------------------------------------------------
+
+  def edit_cwe79
+    render :cwe79
+  end
+
+  def update_cwe79
+    @note = params[:note]
+    @defense = params[:defense] == '1'
+    render :cwe79
   end
 end

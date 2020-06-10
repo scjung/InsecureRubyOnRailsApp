@@ -1,2 +1,36 @@
 <% provide(:title, 'CWE-79: Cross-Site Scripting') %>
 <h1>CWE-79: Cross-Site Scripting</h1>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_with(url: attack_path(79), method: :patch, local: true) do |f| %>
+      <div class="form-group">
+        <%= f.text_area :note, class: 'form-control', placeholder: 'note' %>
+        <span class="help-block">
+          <p>Malicious input: <%= '<script>alert("hacked!")</script>' %></p>
+        </span>
+      </div>
+
+      <div class="checkbox">
+        <%= f.label :defense do %>
+          <%= f.check_box :defense %>
+          Defense the attack
+        <% end %>
+      </div>
+
+      <%= f.submit 'Submit', class: 'btn btn-primary' %>
+    <% end %>
+  </div>
+</div>
+
+<% if @note %>
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      <% if @defense %>
+        <pre><%= @note %></pre>
+      <% else %>
+        <pre><%= raw(@note) %></pre>
+      <% end %>
+    </div>
+  </div>
+<% end %>
