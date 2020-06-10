@@ -1,2 +1,36 @@
 <% provide(:title, 'CWE-78: Path Traversal') %>
 <h1>CWE-78: Path Traversal</h1>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_with(url: attack_path(78), method: :patch, local: true) do |f| %>
+      <div class="form-group">
+        <%= f.label :pattern do %>
+          Search for notes:
+        <% end %>
+        <%= f.text_field :pattern, class: 'form-control', placeholder: 'pattern' %>
+        <span class="help-block">
+          <p>Expected input: morning</p>
+          <p>Malicious input: XXX' *.txt; ls ../..; grep 'XXX </p>
+        </span>
+      </div>
+
+      <div class="checkbox">
+        <%= f.label :defense do %>
+          <%= f.check_box :defense %>
+          Defense the attack
+        <% end %>
+      </div>
+
+      <%= f.submit 'Submit', class: 'btn btn-primary' %>
+    <% end %>
+  </div>
+</div>
+
+<% if @result %>
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      <pre><%= @result %></pre>
+    </div>
+  </div>
+<% end %>
