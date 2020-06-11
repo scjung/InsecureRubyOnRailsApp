@@ -2,11 +2,15 @@
 
 # Controller for attacks
 class AttacksController < ApplicationController
-  def index
-    @cwes = { 22 => 'Path Traversal',
-              78 => 'OS Command Injection',
-              79 => 'Cross-Site Scripting' }
+  def initialize
+    super
+    @cwes = { '22' => 'Path Traversal',
+              '78' => 'OS Command Injection',
+              '79' => 'Cross-Site Scripting',
+              '89' => 'SQL Injection' }
   end
+
+  def index; end
 
   def show
     redirect_to edit_attack_path(params[:id])
@@ -20,6 +24,8 @@ class AttacksController < ApplicationController
       edit_cwe78
     when '79'
       edit_cwe79
+    when '89'
+      edit_cwe89
     else
       render status: 404
     end
@@ -33,6 +39,8 @@ class AttacksController < ApplicationController
       update_cwe78
     when '79'
       update_cwe79
+    when '89'
+      update_cwe89
     else
       render status: 404
     end
@@ -101,5 +109,30 @@ class AttacksController < ApplicationController
     @note = params[:note]
     @defense = params[:defense] == '1'
     render :cwe79
+  end
+
+  # CWE-89 -------------------------------------------------------------------
+
+  def edit_cwe89
+    @user = Article.first.user.name
+    render :cwe89
+  end
+
+  def update_cwe89
+    query = params[:query]
+    @user = Article.first.user.name
+    @article =
+      if params[:defense] == '1'
+        Article.joins(:user)
+               .where('users.name LIKE ?', "%#{query}%")
+               .order(updated_at: :desc)
+               .first
+      else
+        Article.joins(:user)
+               .where("users.name LIKE '%#{query}%'")
+               .order(updated_at: :desc)
+               .first
+      end
+    render :cwe89
   end
 end
