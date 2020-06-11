@@ -1,0 +1,31 @@
+<% provide(:title, 'CWE-95: Eval Injection') %>
+<h1>CWE-95: Eval Injection</h1>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_with(url: attack_path(95), method: :patch, local: true) do |f| %>
+      <div class="form-group">
+        <%= f.label :expr do %>
+          Input an expression:
+        <% end %>
+        <%= f.text_field :expr, class: 'form-control', placeholder: 'expression' %>
+        <span class="help-block">
+          <p>Sample input: 1+2</p>
+        </span>
+        <span class="help-block">
+          <p>Malicious input: User.first.name</p>
+        </span>
+      </div>
+
+      <%= f.submit 'Submit', class: 'btn btn-primary' %>
+    <% end %>
+  </div>
+</div>
+
+<% if @result %>
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      <%= @result %>
+    </div>
+  </div>
+<% end %>
