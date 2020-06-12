@@ -1,0 +1,20 @@
+<% provide(:title, @title) %>
+<h1><%= @title %></h1>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_with(url: attack_path(113), method: :patch, local: true) do |f| %>
+      <div class="form-group">
+        <%= f.label :type do %>
+          Input a Content-Type value:
+        <% end %>
+        <%= f.text_field :type, class: 'form-control', placeholder: 'Content-Type' %>
+        <span class="help-block">
+          <p>Sample input: text/html; charset=UTF-8</p>
+        </span>
+      </div>
+
+      <%= f.submit 'Submit', class: 'btn btn-primary' %>
+    <% end %>
+  </div>
+</div>
