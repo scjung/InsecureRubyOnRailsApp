@@ -15,18 +15,23 @@ module Cwe22
   def update_cwe22
     dir = Rails.public_path.join('notes')
     note = params[:note]
-    note = if params[:defense] == '1'
-             note.gsub(%r{[\\/]}, '')
-           else
-             params[:note]
-           end
-    note_file = File.join(dir, note + '.txt')
-
-    @note = if File.exist?(note_file)
-              File.read(note_file)
-            else
-              "Note does not exist: #{note}"
-            end
+    if params[:defense] == '1'
+      note = note.gsub(%r{[\\/]}, '')
+      note_file = File.join(dir, note + '.txt')
+      @note = if File.exist?(note_file)
+                File.read(note_file)
+              else
+                "Note does not exist: #{note}"
+              end
+    else
+      note = params[:note]
+      note_file = File.join(dir, note + '.txt')
+      @note = if File.exist?(note_file)
+                File.read(note_file)
+              else
+                "Note does not exist: #{note}"
+              end
+    end
 
     @notes = notes
     render :cwe22

@@ -6,6 +6,7 @@ class AttacksController < ApplicationController
   include Cwe78
   include Cwe79
   include Cwe89
+  include Cwe90
   include Cwe95
   include Cwe113
 
@@ -16,6 +17,7 @@ class AttacksController < ApplicationController
       '78' => 'OS Command Injection',
       '79' => 'Cross-Site Scripting',
       '89' => 'SQL Injection',
+      '90' => 'LDAP Injection',
       '95' => 'Eval Injection',
       '113' => 'HTTP Response Splitting'
     }

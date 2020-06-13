@@ -9,11 +9,16 @@ module Cwe78
   def update_cwe78
     dir = Rails.public_path.join('notes')
     pattern = params[:pattern]
-    if params[:defense] == '0' || pattern.match(/^[A-Za-z]+$/)
+    if params[:defense] == '1'
+      if pattern.match(/^[A-Za-z]+$/)
+        cmd = "cd #{dir}; grep '#{pattern}' *.txt"
+        @result = `#{cmd}`
+      else
+        @result = 'Invalid pattern.'
+      end
+    else
       cmd = "cd #{dir}; grep '#{pattern}' *.txt"
       @result = `#{cmd}`
-    else
-      @result = 'Invalid pattern.'
     end
 
     render :cwe78
