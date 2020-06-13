@@ -14,12 +14,9 @@ module Cwe90
       client.auth(@toplevel_user_dn, @toplevel_user_password)
       name = params[:name]
       if params[:defense] == '1'
-        if name.match(/^[a-zA-Z_ ]+$/)
-          rs = client.search(base: @domain, filter: "(cn=#{name})")
-          @result = rs.first.mail if rs
-        else
-          @result = 'Invalid name.'
-        end
+        name = Net::LDAP::Filter.escape(name)
+        rs = client.search(base: @domain, filter: "(cn=#{name})")
+        @result = rs.first.mail if rs
       else
         rs = client.search(base: @domain, filter: "(cn=#{name})")
         @result = rs.first.mail if rs
