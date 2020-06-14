@@ -5,15 +5,15 @@
   <div class="col-md-6 col-md-offset-3">
     <%= form_with(url: attack_path(643), method: :patch, local: true) do |f| %>
       <div class="form-group">
-        <%= f.label :name do %>
-          Input a user name:
+        <%= f.label :title do %>
+          Input a title:
         <% end %>
-        <%= f.text_field :name, class: 'form-control', placeholder: 'name' %>
+        <%= f.text_field :title, class: 'form-control', placeholder: 'title' %>
         <span class="help-block">
-          <p>Sample input: regular_user</p>
+          <p>Sample input: XML</p>
         </span>
         <span class="help-block">
-          <p>Malicious input: regular_user)(cn=regular_user</p>
+          <p>Malicious input: ') or ('1'='1</p>
         </span>
       </div>
 
@@ -29,10 +29,25 @@
   </div>
 </div>
 
-<% if @result %>
+<% if @books %>
   <div class="row">
     <div class="col-md-6 col-md-offset-3">
-      <%= @result %>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Title</th>
+            <th scope="col">Author</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @books.each do |book| %>
+            <tr>
+              <td><%= book[:title] %></td>
+              <td><%= book[:author] %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
     </div>
   </div>
 <% end %>
