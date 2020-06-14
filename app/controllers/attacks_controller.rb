@@ -9,6 +9,7 @@ class AttacksController < ApplicationController
   include Cwe90
   include Cwe95
   include Cwe113
+  include Cwe601
   include Cwe643
 
   def initialize
@@ -21,6 +22,7 @@ class AttacksController < ApplicationController
       '90' => 'LDAP Injection',
       '95' => 'Eval Injection',
       '113' => 'HTTP Response Splitting',
+      '601' => 'Open Redirect',
       '643' => 'XPath Injection'
     }
   end
