@@ -29,6 +29,7 @@ class AttacksController < ApplicationController
       '326' => 'Inadequate Encryption Strength',
       '327' => 'Risky Cryptographic Algorithm',
       '352' => 'Cross-Site Request Forgery',
+      '434' => 'Unrestricted Upload of File with Dangerous Type',
       '601' => 'Open Redirect',
       '643' => 'XPath Injection'
     }
@@ -60,6 +61,10 @@ class AttacksController < ApplicationController
 
   def edit_cwe352
     redirect_to new_csrf_path
+  end
+
+  def edit_cwe434
+    redirect_to uploads_path
   end
 
   private
