@@ -22,6 +22,7 @@ class AttacksController < ApplicationController
       '90' => 'LDAP Injection',
       '95' => 'Eval Injection',
       '113' => 'HTTP Response Splitting',
+      '352' => 'Cross-Site Request Forgery',
       '601' => 'Open Redirect',
       '643' => 'XPath Injection'
     }
@@ -49,6 +50,10 @@ class AttacksController < ApplicationController
     else
       render status: 404
     end
+  end
+
+  def edit_cwe352
+    redirect_to new_csrf_path
   end
 
   private

@@ -18,4 +18,5 @@ Rails.application.routes.draw do
   resources :articles, only: %i[create destroy]
   resources :relationships, only: %i[create destroy]
   resources :attacks, only: %i[index show edit update]
+  resources :csrf, only: %i[new index]
 end
