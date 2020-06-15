@@ -10,6 +10,7 @@ class AttacksController < ApplicationController
   include Cwe95
   include Cwe113
   include Cwe134
+  include Cwe326
   include Cwe601
   include Cwe643
 
@@ -24,6 +25,7 @@ class AttacksController < ApplicationController
       '95' => 'Eval Injection',
       '113' => 'HTTP Response Splitting',
       '134' => 'Format String Injection',
+      '326' => 'Inadequate Encryption Strength',
       '352' => 'Cross-Site Request Forgery',
       '601' => 'Open Redirect',
       '643' => 'XPath Injection'
