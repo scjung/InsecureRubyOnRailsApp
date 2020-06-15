@@ -9,6 +9,7 @@ class AttacksController < ApplicationController
   include Cwe90
   include Cwe95
   include Cwe113
+  include Cwe134
   include Cwe601
   include Cwe643
 
@@ -22,6 +23,7 @@ class AttacksController < ApplicationController
       '90' => 'LDAP Injection',
       '95' => 'Eval Injection',
       '113' => 'HTTP Response Splitting',
+      '134' => 'Format String Injection',
       '352' => 'Cross-Site Request Forgery',
       '601' => 'Open Redirect',
       '643' => 'XPath Injection'
