@@ -10,6 +10,7 @@ class AttacksController < ApplicationController
   include Cwe95
   include Cwe113
   include Cwe134
+  include Cwe321
   include Cwe326
   include Cwe327
   include Cwe330
@@ -27,6 +28,7 @@ class AttacksController < ApplicationController
       '95' => 'Eval Injection',
       '113' => 'HTTP Response Splitting',
       '134' => 'Format String Injection',
+      '321' => 'Hard-Coded Cryptographic Key',
       '326' => 'Inadequate Encryption Strength',
       '327' => 'Risky Cryptographic Algorithm',
       '330' => 'Insufficiently Random Values',

@@ -1,0 +1,32 @@
+<% provide(:title, @title) %>
+<h1><%= @title %></h1>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_with(url: attack_path(321), method: :patch, local: true) do |f| %>
+      <div class="form-group">
+        <%= f.label :text do %>
+          Input a text to encrypt:
+        <% end %>
+        <%= f.text_field :text, class: 'form-control', placeholder: 'label' %>
+      </div>
+
+      <div class="checkbox">
+        <%= f.label :defense do %>
+          <%= f.check_box :defense %>
+          Do not use hardcoded key
+        <% end %>
+      </div>
+
+      <%= f.submit 'Submit', class: 'btn btn-primary' %>
+    <% end %>
+  </div>
+</div>
+
+<% if @enc %>
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      <pre><%= @enc %></pre>
+    </div>
+  </div>
+<% end %>
