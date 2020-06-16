@@ -12,6 +12,7 @@ class AttacksController < ApplicationController
   include Cwe134
   include Cwe326
   include Cwe327
+  include Cwe330
   include Cwe601
   include Cwe643
 
@@ -28,6 +29,7 @@ class AttacksController < ApplicationController
       '134' => 'Format String Injection',
       '326' => 'Inadequate Encryption Strength',
       '327' => 'Risky Cryptographic Algorithm',
+      '330' => 'Insufficiently Random Values',
       '352' => 'Cross-Site Request Forgery',
       '434' => 'Unrestricted Upload of File with Dangerous Type',
       '601' => 'Open Redirect',
