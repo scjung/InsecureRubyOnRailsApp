@@ -17,6 +17,7 @@ class AttacksController < ApplicationController
   include Cwe539
   include Cwe601
   include Cwe643
+  include Cwe759
 
   def initialize
     super
@@ -37,7 +38,8 @@ class AttacksController < ApplicationController
       '434' => 'Unrestricted Upload of File with Dangerous Type',
       '539' => 'Persistent Cookies',
       '601' => 'Open Redirect',
-      '643' => 'XPath Injection'
+      '643' => 'XPath Injection',
+      '759' => 'One-Way Hash without a Salt'
     }
   end
 
