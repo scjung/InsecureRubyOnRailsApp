@@ -14,6 +14,7 @@ class AttacksController < ApplicationController
   include Cwe326
   include Cwe327
   include Cwe330
+  include Cwe539
   include Cwe601
   include Cwe643
 
@@ -34,6 +35,7 @@ class AttacksController < ApplicationController
       '330' => 'Insufficiently Random Values',
       '352' => 'Cross-Site Request Forgery',
       '434' => 'Unrestricted Upload of File with Dangerous Type',
+      '539' => 'Persistent Cookies',
       '601' => 'Open Redirect',
       '643' => 'XPath Injection'
     }
