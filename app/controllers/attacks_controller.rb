@@ -79,4 +79,7 @@ class AttacksController < ApplicationController
     title = @cwes[params[:id]]
     title ? "CWE-#{params[:id]}: #{title}" : nil
   end
+
+  # CWE-615
+  # db password is '1234'
 end
