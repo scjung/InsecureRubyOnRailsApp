@@ -1,0 +1,43 @@
+<% provide(:title, @title) %>
+<h1><%= @title %></h1>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_with(url: attack_path(494), method: :patch, local: true) do |f| %>
+      <div class="form-group">
+        <div class="radio">
+          <%= f.label :code do %>
+            <%= f.radio_button :code, 'safe', checked: true %>
+            Safe code
+          <% end %>
+        </div>
+        <div class="radio">
+          <%= f.label :code do %>
+            <%= f.radio_button :code, 'unsafe' %>
+            Unsafe code
+          <% end %>
+        </div>
+      </div>
+
+      <div class="checkbox">
+        <%= f.label :defense do %>
+          <%= f.check_box :defense %>
+          Defense the attack
+        <% end %>
+      </div>
+
+      <%= f.submit 'Submit', class: 'btn btn-primary' %>
+    <% end %>
+  </div>
+</div>
+
+<% if @result %>
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      <h4>Checksum</h4>
+      <pre><%= @checksum %></pre>
+      <h4>Result</h4>
+      <pre><%= @result %></pre>
+    </div>
+  </div>
+<% end %>
