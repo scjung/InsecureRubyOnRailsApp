@@ -20,4 +20,5 @@ Rails.application.routes.draw do
   resources :attacks, only: %i[index show edit update]
   resources :csrf, only: %i[new index]
   resources :uploads, only: %i[index create]
+  resources :insecure_users, only: %i[new create]
 end

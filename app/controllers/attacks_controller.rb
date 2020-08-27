@@ -38,6 +38,7 @@ class AttacksController < ApplicationController
       '352' => 'Cross-Site Request Forgery',
       '434' => 'Unrestricted Upload of File with Dangerous Type',
       '494' => 'Download of Code Without Integrity Check',
+      '521' => 'Weak Password Requirements',
       '539' => 'Persistent Cookies',
       '601' => 'Open Redirect',
       '643' => 'XPath Injection',
@@ -75,6 +76,10 @@ class AttacksController < ApplicationController
 
   def edit_cwe434
     redirect_to uploads_path
+  end
+
+  def edit_cwe521
+    redirect_to new_insecure_user_path
   end
 
   private

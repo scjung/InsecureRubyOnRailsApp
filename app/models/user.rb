@@ -26,9 +26,15 @@ class User < ApplicationRecord
                     format: { with: VALID_EMAIL_REGEX },
                     uniqueness: true
 
+  VALID_PASSWORD_REGEX = /\A
+    (?=.*\d)
+    (?=.*[[:^alnum:]])
+  /x.freeze
   has_secure_password
   validates :password, presence: true, length: { minimum: 6 },
-                       allow_nil: true
+    format: { with: VALID_PASSWORD_REGEX,
+              message: 'requires at least one digit and one symbol.' },
+    allow_nil: true
 
   class << self
     def digest(string)
